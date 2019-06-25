@@ -1,5 +1,6 @@
 {
   "name": "nodeexpress",
+  "main": "meadowlark.js",
   "version": "0.0.0",
   "private": true,
   "scripts": {
