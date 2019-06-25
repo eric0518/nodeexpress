@@ -23,7 +23,9 @@ app.get("/about", function(req, res){
     // res.type("text/plain");
     // res.send("About Meadowlark Travel.");
 
-    res.render("about");
+    var radomFortune = fortunes[Math.floor(Math.random() * fortunes.length)]
+
+    res.render("about", {fortune : radomFortune});
 });
 
 app.use(function(req, res, next){
@@ -39,7 +41,15 @@ app.use(function(req, res, next){
 app.use(function(req, res, next){
     res.status(500);
     res.render("500");
-})
+});
+
+var fortunes = [
+    "Conquer your fears",
+    "River needs Spring",
+    "Do not fear what you don't know",
+    "You will have a pleasant surprise",
+    "Whenever possible, keep it simple"
+];
 
 
 // app.listen(app.get("port"), function(){
