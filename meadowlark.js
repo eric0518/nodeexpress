@@ -11,6 +11,8 @@ app.use(express.static(__dirname + "/public"));
 
 // app.set("port", process.env.port || 5000);
 
+var fortune = require("./lib/fortune.js")
+
 
 app.get("/", function(req, res){
     // res.type("text/plain");
@@ -23,9 +25,7 @@ app.get("/about", function(req, res){
     // res.type("text/plain");
     // res.send("About Meadowlark Travel.");
 
-    var radomFortune = fortunes[Math.floor(Math.random() * fortunes.length)]
-
-    res.render("about", {fortune : radomFortune});
+    res.render("about", { fortune : fortune.getFortune() });
 });
 
 app.use(function(req, res, next){
@@ -42,14 +42,6 @@ app.use(function(req, res, next){
     res.status(500);
     res.render("500");
 });
-
-var fortunes = [
-    "Conquer your fears",
-    "River needs Spring",
-    "Do not fear what you don't know",
-    "You will have a pleasant surprise",
-    "Whenever possible, keep it simple"
-];
 
 
 // app.listen(app.get("port"), function(){
